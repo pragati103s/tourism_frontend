@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css'
 import App from './App.jsx'
 import MapPage from "./pages/MapPage.jsx";
+import "cesium/Build/Cesium/Widgets/widgets.css";
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

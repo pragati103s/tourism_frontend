@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import dummyPlan from "../data/dummyPlan";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
+import CesiumMap from "../components/CesiumMap";
 
 export default function MapPage() {
 //   const { state } = useLocation(); // API data
@@ -50,9 +50,9 @@ const [activePlace, setActivePlace] = useState(0);
             <div
               key={i}
               onClick={() => setActivePlace(i)}
-              className={`mb-6 flex ${
-                i % 2 === 0 ? "justify-start ml-8" : "justify-end mr-8"
-                }`}
+              className={`ml-8 mb-6 cursor-pointer ${
+                activePlace === i ? "scale-105" : ""
+              }`}
             >
               {/* dot */}
               <div className="absolute left-0 w-3 h-3 bg-green-400 rounded-full"></div>
@@ -83,9 +83,7 @@ const [activePlace, setActivePlace] = useState(0);
       <div className="w-[70%] relative">
 
         {/* MAP PLACEHOLDER */}
-        <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-          <h2 className="text-xl">Map will render here</h2>
-        </div>
+        <CesiumMap places={dummyPlan[activeDay].places} activePlace={activePlace}/>
 
         {/* BOTTOM IMAGE STRIP */}
        <div className="absolute bottom-4 left-4 flex gap-3">
